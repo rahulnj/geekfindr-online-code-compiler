@@ -1,8 +1,8 @@
 import * as esbuild from 'esbuild-wasm'
 import { useEffect, useRef, useState } from 'react';
 import ReactDom from 'react-dom';
-import { fetchPlugin } from './plugins/fetch-plugin';
-import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
+import { fetchPlugin, unpkgPathPlugin } from './plugins';
+
 
 const App = () => {
     const ref = useRef<any>();
@@ -12,15 +12,13 @@ const App = () => {
     const startService = async () => {
         ref.current = await esbuild.startService({
             worker: true,
-            wasmURL: './esbuild.wasm'
+            wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm'
         })
     }
 
     useEffect(() => {
         startService()
     }, [])
-
-
 
     const submitHandler = async () => {
         if (!ref.current) {

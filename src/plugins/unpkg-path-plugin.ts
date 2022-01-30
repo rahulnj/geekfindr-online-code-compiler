@@ -1,7 +1,6 @@
 import * as esbuild from 'esbuild-wasm';
 
 
-
 export const unpkgPathPlugin = () => {
     return {
         name: 'unpkg-path-plugin',
@@ -28,8 +27,6 @@ export const unpkgPathPlugin = () => {
                     path: `https://unpkg.com/${args.path}`
                 }
             });
-
-
         },
     };
 };
