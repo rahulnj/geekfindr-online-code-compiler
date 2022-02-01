@@ -1,7 +1,10 @@
-import * as esbuild from 'esbuild-wasm'
 import { useEffect, useRef, useState } from 'react';
 import ReactDom from 'react-dom';
+
+import * as esbuild from 'esbuild-wasm'
+
 import { fetchPlugin, unpkgPathPlugin } from './plugins';
+import { CodeEditor } from './components';
 
 
 const App = () => {
@@ -67,6 +70,10 @@ console.error(error);
 
     return (
         <div>
+            <CodeEditor
+                initialvalue='console.log("hello world")'
+                onChange={(value) => setInput(value)}
+            />
             <textarea value={input} onChange={(e) => setInput(e.target.value)}></textarea>
             <div>
                 <button onClick={submitHandler}>submit</button>
