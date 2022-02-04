@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
+import './CodeCell.css'
 
-import { CodeEditor, Preview } from '../../components';
+import { CodeEditor, Preview, Resizable } from '../../components';
 import bundle from '../../bundler'
+
 
 const CodeCell = () => {
 
@@ -22,16 +24,15 @@ const CodeCell = () => {
 
 
     return (
-        <div>
-            <CodeEditor
-                initialvalue='console.log("hello world")'
-                onChange={(value) => setInput(value)}
-            />
-            <div>
-                <button onClick={submitHandler}>submit</button>
-            </div>
-            <Preview code={code} />
-        </div>
+        <Resizable direction='vertical'>
+            <div className='codecell'>
+                <CodeEditor
+                    initialvalue='console.log("hello world")'
+                    onChange={(value) => setInput(value)}
+                />
+                <Preview code={code} />
+            </div >
+        </Resizable>
     )
 
 }
