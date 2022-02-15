@@ -23,7 +23,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialvalue }) => {
         editorRef.current = monacoEditor;
         monacoEditor.onDidChangeModelContent(() => {
             onChange(getValue());
-            console.log(getValue());
+            // console.log(getValue());
         });
 
         // To reduce the tab space in the code editor.

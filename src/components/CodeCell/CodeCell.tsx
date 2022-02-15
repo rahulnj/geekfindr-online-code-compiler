@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './CodeCell.css'
 
@@ -12,14 +12,20 @@ const CodeCell = () => {
     const [code, setCode] = useState('')
     const [input, setInput] = useState('');
 
+    useEffect(() => {
+        const timer = setTimeout(async () => {
+            console.log(timer);
+
+            const output = await bundle(input)
+            setCode(output);
+        }, 750);
+        return () => {
+            clearTimeout(timer);
+        }
+    }, [input])
 
 
 
-
-    const submitHandler = async () => {
-        const output = await bundle(input)
-        setCode(output);
-    };
 
 
 
