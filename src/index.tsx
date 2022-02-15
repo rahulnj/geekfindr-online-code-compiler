@@ -2,7 +2,7 @@ import ReactDom from 'react-dom';
 
 import 'bulmaswatch/superhero/bulmaswatch.min.css'
 
-import { CodeCell } from './components';
+import { CodeCell, TextEditor } from './components';
 
 
 
@@ -10,7 +10,8 @@ const App = () => {
 
     return (
         <div>
-            <CodeCell />
+            <TextEditor />
+            {/* <CodeCell /> */}
         </div>
     )
 
