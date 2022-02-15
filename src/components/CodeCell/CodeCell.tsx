@@ -26,10 +26,12 @@ const CodeCell = () => {
     return (
         <Resizable direction='vertical'>
             <div className='codecell'>
-                <CodeEditor
-                    initialvalue='console.log("hello world")'
-                    onChange={(value) => setInput(value)}
-                />
+                <Resizable direction='horizontal'>
+                    <CodeEditor
+                        initialvalue='console.log("hello world")'
+                        onChange={(value) => setInput(value)}
+                    />
+                </Resizable>
                 <Preview code={code} />
             </div >
         </Resizable>
