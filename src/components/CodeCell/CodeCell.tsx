@@ -14,8 +14,6 @@ const CodeCell = () => {
 
     useEffect(() => {
         const timer = setTimeout(async () => {
-            console.log(timer);
-
             const output = await bundle(input)
             setCode(output);
         }, 750);
