@@ -6,7 +6,7 @@ import { store } from './state';
 
 import 'bulmaswatch/superhero/bulmaswatch.min.css'
 
-import { CodeCell, TextEditor } from './components';
+import { TextEditor } from './components';
 
 
 
