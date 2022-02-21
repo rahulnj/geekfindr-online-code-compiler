@@ -6,7 +6,7 @@ import { store } from './state';
 
 import 'bulmaswatch/superhero/bulmaswatch.min.css'
 
-import { TextEditor } from './components';
+import { CellList } from './components';
 
 
 
@@ -15,8 +15,7 @@ const App = () => {
     return (
         <Provider store={store}>
             <div>
-                <TextEditor />
-                {/* <CodeCell /> */}
+                <CellList />
             </div>
         </Provider>
     )

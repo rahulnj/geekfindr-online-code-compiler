@@ -21,10 +21,11 @@ const initialState: CellsState = {
 
 const reducer = produce((
     state: CellsState = initialState,
-    action: Action) => {
+    action: Action): CellsState => {
     switch (action.type) {
         case ActionType.UPDATE_CELL:
             const { id, content } = action.payload;
+
             state.data[id].content = content
             return state;
         case ActionType.DELETE_CELL:
@@ -55,7 +56,6 @@ const reducer = produce((
             } else {
                 state.order.splice(foundIndex, 0, cell.id)
             }
-
             return state;
         default:
             return state;
