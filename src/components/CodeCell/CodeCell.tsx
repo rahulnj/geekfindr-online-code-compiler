@@ -20,19 +20,34 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
     const { updateCell, createBundle } = useActions()
 
     const bundle = useTypedSelector((state: any) => state.bundles[cell.id])
+    const cumulativeCode = useTypedSelector((state: any) => {
+        const { data, order } = state.cells;
+        const orderedCells = order.map((id: string) => data[id])
+        const cumulativeCode = [];
+        for (let c of orderedCells) {
+            if (c.type === 'code') {
+                cumulativeCode.push(c.content);
+            }
+            if (c.id === cell.id) {
+                break;
+            }
+        }
+        return cumulativeCode;
+    })
+    console.log(cumulativeCode);
 
     useEffect(() => {
         if (!bundle) {
-            createBundle(cell.id, cell.content)
+            createBundle(cell.id, cumulativeCode.join('\n'))
             return;
         }
         const timer = setTimeout(async () => {
-            createBundle(cell.id, cell.content)
+            createBundle(cell.id, cumulativeCode.join('\n'))
         }, 750);
         return () => {
             clearTimeout(timer);
         }
-    }, [cell.content, cell.id, createBundle])
+    }, [cumulativeCode.join('\n'), cell.id, createBundle])
 
 
 
